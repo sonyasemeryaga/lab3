@@ -11,25 +11,25 @@ class GildedRose {
         for (Item item : items) {
             if (!item.name.equals("Aged Brie")
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality > 0) {
+                if (item.itemSellInQuality.quality > 0) {
                     if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        item.quality = item.quality - 1;
+                        item.itemSellInQuality.quality = item.itemSellInQuality.quality - 1;
                     }
                 }
             } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                if (item.itemSellInQuality.quality < 50) {
+                    item.itemSellInQuality.quality = item.itemSellInQuality.quality + 1;
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                        if (item.itemSellInQuality.sellIn < 11) {
+                            if (item.itemSellInQuality.quality < 50) {
+                                item.itemSellInQuality.quality = item.itemSellInQuality.quality + 1;
                             }
                         }
 
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                        if (item.itemSellInQuality.sellIn < 6) {
+                            if (item.itemSellInQuality.quality < 50) {
+                                item.itemSellInQuality.quality = item.itemSellInQuality.quality + 1;
                             }
                         }
                     }
@@ -37,23 +37,23 @@ class GildedRose {
             }
 
             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
+                item.itemSellInQuality.sellIn = item.itemSellInQuality.sellIn - 1;
             }
 
-            if (item.sellIn < 0) {
+            if (item.itemSellInQuality.sellIn < 0) {
                 if (!item.name.equals("Aged Brie")) {
                     if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.quality > 0) {
+                        if (item.itemSellInQuality.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                item.quality = item.quality - 1;
+                                item.itemSellInQuality.quality = item.itemSellInQuality.quality - 1;
                             }
                         }
                     } else {
-                        item.quality = item.quality - item.quality;
+                        item.itemSellInQuality.quality = item.itemSellInQuality.quality - item.itemSellInQuality.quality;
                     }
                 } else {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                    if (item.itemSellInQuality.quality < 50) {
+                        item.itemSellInQuality.quality = item.itemSellInQuality.quality + 1;
                     }
                 }
             }
