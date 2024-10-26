@@ -4,18 +4,15 @@ public class Item {
 
     public String name;
 
-    public int sellIn;
-
-    public int quality;
+    public ItemSellInQuality itemSellInQuality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
+        this.itemSellInQuality = new ItemSellInQuality(sellIn, quality);
     }
 
    @Override
    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.name + ", " + itemSellInQuality.sellIn + ", " + itemSellInQuality.quality;
     }
 }
