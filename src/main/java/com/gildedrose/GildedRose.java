@@ -24,14 +24,14 @@ class GildedRose {
     private void updateItem(Item item) {
         String name = item.name;
         if (!isSpecialItem(name)) {
-            updateUsualItems(item.itemSellInQuality, name);
+            updateUsualItems(item.itemSellInQuality);
             return;
         }
         updateBackstagePasses(item.itemSellInQuality, name);
         updateAgedBrie(item.itemSellInQuality, name);
     }
 
-    private void updateUsualItems(ItemSellInQuality itemSellInQuality, String name) {
+    private void updateUsualItems(ItemSellInQuality itemSellInQuality) {
         decreaseQuality(itemSellInQuality);
         decreaseSellInForNotSulfuras(itemSellInQuality);
         if (itemSellInQuality.sellIn < 0) {
