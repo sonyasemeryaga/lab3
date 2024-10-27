@@ -22,32 +22,35 @@ class GildedRose {
                 decreaseQuality(item.itemSellInQuality);
             } else {
                 increaseQuality(item.itemSellInQuality);
-
-                    if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.itemSellInQuality.sellIn < 11) {
-                            increaseQuality(item.itemSellInQuality);
-                        }
-
-                        if (item.itemSellInQuality.sellIn < 6) {
-                            increaseQuality(item.itemSellInQuality);
-                        }
-                    }
+                updateBackstagePasses(item, name);
             }
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
 
             if (item.itemSellInQuality.sellIn < 0) {
                 if (!name.equals("Aged Brie")) {
-                    if (!name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                            decreaseQuality(item.itemSellInQuality);
-                        }
-                    } else {
-                        zeroQuality(item.itemSellInQuality);
+                    if (!name.equals("Sulfuras, Hand of Ragnaros")) {
+                        decreaseQuality(item.itemSellInQuality);
                     }
                 } else {
                     increaseQuality(item.itemSellInQuality);
                 }
+            }
+        }
+    }
+
+    private void updateBackstagePasses(Item item, String name) {
+        if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (item.itemSellInQuality.sellIn < 11) {
+                increaseQuality(item.itemSellInQuality);
+            }
+
+            if (item.itemSellInQuality.sellIn < 6) {
+                increaseQuality(item.itemSellInQuality);
+            }
+
+            if (item.itemSellInQuality.sellIn < 0) {
+                zeroQuality(item.itemSellInQuality);
             }
         }
     }
