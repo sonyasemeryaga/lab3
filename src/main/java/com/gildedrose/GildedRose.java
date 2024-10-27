@@ -19,11 +19,7 @@ class GildedRose {
         for (Item item : items) {
             String name = item.name;
             if (!isSpecialItem(name)) {
-                decreaseQuality(item.itemSellInQuality);
-                decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
-                if (item.itemSellInQuality.sellIn < 0) {
-                    decreaseQuality(item.itemSellInQuality);
-                }
+                updateUsualItems(item.itemSellInQuality, name);
             } else {
                 increaseQuality(item.itemSellInQuality);
                 updateBackstagePasses(item.itemSellInQuality, name);
@@ -32,9 +28,17 @@ class GildedRose {
         }
     }
 
+    private void updateUsualItems(ItemSellInQuality itemSellInQuality, String name) {
+        decreaseQuality(itemSellInQuality);
+        decreaseSellInForNotSulfuras(itemSellInQuality);
+        if (itemSellInQuality.sellIn < 0) {
+            decreaseQuality(itemSellInQuality);
+        }
+    }
+
     private void updateAgedBrie(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Aged Brie")) {
-            decreaseSellInForNotSulfuras(itemSellInQuality, name);
+            decreaseSellInForNotSulfuras(itemSellInQuality);
             if (itemSellInQuality.sellIn < 0) {
                 increaseQuality(itemSellInQuality);
             }
@@ -43,7 +47,7 @@ class GildedRose {
 
     private void updateBackstagePasses(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            decreaseSellInForNotSulfuras(itemSellInQuality, name);
+            decreaseSellInForNotSulfuras(itemSellInQuality);
             if (itemSellInQuality.sellIn < 11) {
                 increaseQuality(itemSellInQuality);
             }
@@ -66,7 +70,7 @@ class GildedRose {
         itemSellInQuality.quality = 0;
     }
 
-    private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality, String name) {
+    private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality) {
         itemSellInQuality.sellIn -= 1;
     }
 
