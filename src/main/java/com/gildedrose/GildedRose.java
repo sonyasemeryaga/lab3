@@ -38,13 +38,17 @@ class GildedRose {
                             decreaseQuality(item.itemSellInQuality);
                         }
                     } else {
-                        item.itemSellInQuality.quality = 0;
+                        zeroQuality(item.itemSellInQuality);
                     }
                 } else {
                     increaseQuality(item.itemSellInQuality);
                 }
             }
         }
+    }
+
+    private void zeroQuality(ItemSellInQuality itemSellInQuality) {
+        itemSellInQuality.quality = 0;
     }
 
     private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality, String name) {
