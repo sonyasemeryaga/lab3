@@ -20,6 +20,9 @@ class GildedRose {
             String name = item.name;
             if (!isSpecialItem(name)) {
                 decreaseQuality(item.itemSellInQuality);
+                if (item.itemSellInQuality.sellIn < 0) {
+                    decreaseQuality(item.itemSellInQuality);
+                }
             } else {
                 increaseQuality(item.itemSellInQuality);
                 updateBackstagePasses(item.itemSellInQuality, name);
@@ -28,11 +31,6 @@ class GildedRose {
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
 
-            if (item.itemSellInQuality.sellIn < 0) {
-                if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                    decreaseQuality(item.itemSellInQuality);
-                }
-            }
         }
     }
 
