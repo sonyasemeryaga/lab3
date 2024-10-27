@@ -22,8 +22,8 @@ class GildedRose {
                 decreaseQuality(item.itemSellInQuality);
             } else {
                 increaseQuality(item.itemSellInQuality);
-                updateBackstagePasses(item, name);
-                updateAgedBrie(item, name);
+                updateBackstagePasses(item.itemSellInQuality, name);
+                updateAgedBrie(item.itemSellInQuality, name);
             }
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
@@ -36,26 +36,26 @@ class GildedRose {
         }
     }
 
-    private void updateAgedBrie(Item item, String name) {
+    private void updateAgedBrie(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Aged Brie")) {
-            if (item.itemSellInQuality.sellIn < 0) {
-                increaseQuality(item.itemSellInQuality);
+            if (itemSellInQuality.sellIn < 0) {
+                increaseQuality(itemSellInQuality);
             }
         }
     }
 
-    private void updateBackstagePasses(Item item, String name) {
+    private void updateBackstagePasses(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (item.itemSellInQuality.sellIn < 11) {
-                increaseQuality(item.itemSellInQuality);
+            if (itemSellInQuality.sellIn < 11) {
+                increaseQuality(itemSellInQuality);
             }
 
-            if (item.itemSellInQuality.sellIn < 6) {
-                increaseQuality(item.itemSellInQuality);
+            if (itemSellInQuality.sellIn < 6) {
+                increaseQuality(itemSellInQuality);
             }
 
-            if (item.itemSellInQuality.sellIn < 0) {
-                zeroQuality(item.itemSellInQuality);
+            if (itemSellInQuality.sellIn < 0) {
+                zeroQuality(itemSellInQuality);
             }
         }
     }
