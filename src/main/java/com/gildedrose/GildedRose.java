@@ -1,7 +1,15 @@
 package com.gildedrose;
 
+import java.util.List;
+
 class GildedRose {
     Item[] items;
+
+    private static final List<String> SPECIAL_ITEMS = List.of(
+            "Aged Brie",
+            "Backstage passes to a TAFKAL80ETC concert",
+            "Sulfuras, Hand of Ragnaros"
+    );
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -10,23 +18,19 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             String name = item.name;
-            if (!name.equals("Aged Brie")
-                    && !name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                    decreaseQuality(item.itemSellInQuality);
+            if (!isSpecialItem(name)) {
+                decreaseQuality(item.itemSellInQuality);
+            }
+            increaseQuality(item.itemSellInQuality);
+
+            if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.itemSellInQuality.sellIn < 11) {
+                    increaseQuality(item.itemSellInQuality);
                 }
-            } else {
-                increaseQuality(item.itemSellInQuality);
 
-                    if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.itemSellInQuality.sellIn < 11) {
-                            increaseQuality(item.itemSellInQuality);
-                        }
-
-                        if (item.itemSellInQuality.sellIn < 6) {
-                            increaseQuality(item.itemSellInQuality);
-                        }
-                    }
+                if (item.itemSellInQuality.sellIn < 6) {
+                    increaseQuality(item.itemSellInQuality);
+                }
             }
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
@@ -45,6 +49,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isSpecialItem(String name) {
+        return SPECIAL_ITEMS.contains(name);
     }
 
     private void zeroQuality(ItemSellInQuality itemSellInQuality) {
