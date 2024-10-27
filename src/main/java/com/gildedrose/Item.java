@@ -11,24 +11,30 @@ public class Item {
         this.itemSellInQuality = new ItemSellInQuality(sellIn, quality);
     }
 
-    private void zeroQuality() {
+    protected void zeroQuality() {
         itemSellInQuality.quality = 0;
     }
 
-    private void decreaseSellInForNotSulfuras() {
+    protected void decreaseSellInForNotSulfuras() {
         itemSellInQuality.sellIn -= 1;
     }
 
-    private void increaseQuality() {
+    protected void increaseQuality() {
         if (itemSellInQuality.quality < 50) {
             itemSellInQuality.quality += 1;
         }
     }
 
-    private void decreaseQuality() {
+    protected void decreaseQuality() {
         if (itemSellInQuality.quality > 0) {
             itemSellInQuality.quality -= 1;
         }
+    }
+
+    protected void updateItem() {
+        decreaseQuality();
+        decreaseSellInForNotSulfuras();
+        if (itemSellInQuality.sellIn < 0) decreaseQuality();
     }
 
    @Override
