@@ -23,18 +23,23 @@ class GildedRose {
             } else {
                 increaseQuality(item.itemSellInQuality);
                 updateBackstagePasses(item, name);
+                updateAgedBrie(item, name);
             }
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
 
             if (item.itemSellInQuality.sellIn < 0) {
-                if (!name.equals("Aged Brie")) {
-                    if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                        decreaseQuality(item.itemSellInQuality);
-                    }
-                } else {
-                    increaseQuality(item.itemSellInQuality);
+                if (!name.equals("Sulfuras, Hand of Ragnaros")) {
+                    decreaseQuality(item.itemSellInQuality);
                 }
+            }
+        }
+    }
+
+    private void updateAgedBrie(Item item, String name) {
+        if (name.equals("Aged Brie")) {
+            if (item.itemSellInQuality.sellIn < 0) {
+                increaseQuality(item.itemSellInQuality);
             }
         }
     }
