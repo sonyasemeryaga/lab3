@@ -20,17 +20,18 @@ class GildedRose {
             String name = item.name;
             if (!isSpecialItem(name)) {
                 decreaseQuality(item.itemSellInQuality);
-            }
-            increaseQuality(item.itemSellInQuality);
+            } else {
+                increaseQuality(item.itemSellInQuality);
 
-            if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.itemSellInQuality.sellIn < 11) {
-                    increaseQuality(item.itemSellInQuality);
-                }
+                    if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                        if (item.itemSellInQuality.sellIn < 11) {
+                            increaseQuality(item.itemSellInQuality);
+                        }
 
-                if (item.itemSellInQuality.sellIn < 6) {
-                    increaseQuality(item.itemSellInQuality);
-                }
+                        if (item.itemSellInQuality.sellIn < 6) {
+                            increaseQuality(item.itemSellInQuality);
+                        }
+                    }
             }
 
             decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
