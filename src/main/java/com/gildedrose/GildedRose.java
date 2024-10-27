@@ -20,6 +20,7 @@ class GildedRose {
             String name = item.name;
             if (!isSpecialItem(name)) {
                 decreaseQuality(item.itemSellInQuality);
+                decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
                 if (item.itemSellInQuality.sellIn < 0) {
                     decreaseQuality(item.itemSellInQuality);
                 }
@@ -28,14 +29,12 @@ class GildedRose {
                 updateBackstagePasses(item.itemSellInQuality, name);
                 updateAgedBrie(item.itemSellInQuality, name);
             }
-
-            decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
-
         }
     }
 
     private void updateAgedBrie(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Aged Brie")) {
+            decreaseSellInForNotSulfuras(itemSellInQuality, name);
             if (itemSellInQuality.sellIn < 0) {
                 increaseQuality(itemSellInQuality);
             }
@@ -44,6 +43,7 @@ class GildedRose {
 
     private void updateBackstagePasses(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            decreaseSellInForNotSulfuras(itemSellInQuality, name);
             if (itemSellInQuality.sellIn < 11) {
                 increaseQuality(itemSellInQuality);
             }
@@ -67,9 +67,7 @@ class GildedRose {
     }
 
     private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality, String name) {
-        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-            itemSellInQuality.sellIn -= 1;
-        }
+        itemSellInQuality.sellIn -= 1;
     }
 
     private void increaseQuality(ItemSellInQuality itemSellInQuality) {
