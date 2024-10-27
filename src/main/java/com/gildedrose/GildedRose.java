@@ -34,9 +34,7 @@ class GildedRose {
     private void updateUsualItems(ItemSellInQuality itemSellInQuality) {
         decreaseQuality(itemSellInQuality);
         decreaseSellInForNotSulfuras(itemSellInQuality);
-        if (itemSellInQuality.sellIn < 0) {
-            decreaseQuality(itemSellInQuality);
-        }
+        if (itemSellInQuality.sellIn < 0) decreaseQuality(itemSellInQuality);
     }
 
     private void updateAgedBrie(ItemSellInQuality itemSellInQuality, String name) {
