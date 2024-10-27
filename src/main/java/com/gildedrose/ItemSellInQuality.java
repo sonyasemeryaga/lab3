@@ -10,24 +10,4 @@ public class ItemSellInQuality {
         this.sellIn = sellIn;
         this.quality = quality;
     }
-
-    public void zeroQuality() {
-        this.quality = 0;
-    }
-
-    public void decreaseSellInForNotSulfuras() {
-        this.sellIn -= 1;
-    }
-
-    public void increaseQuality() {
-        if (this.quality < 50) {
-            this.quality += 1;
-        }
-    }
-
-    public void decreaseQuality() {
-        if (this.quality > 0) {
-            this.quality -= 1;
-        }
-    }
 }

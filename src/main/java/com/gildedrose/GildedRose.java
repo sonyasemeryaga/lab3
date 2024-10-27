@@ -60,20 +60,4 @@ class GildedRose {
     private boolean isSpecialItem(String name) {
         return SPECIAL_ITEMS.contains(name);
     }
-
-    private void zeroQuality(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.zeroQuality();
-    }
-
-    private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.decreaseSellInForNotSulfuras();
-    }
-
-    private void increaseQuality(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.increaseQuality();
-    }
-
-    private void decreaseQuality(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.decreaseQuality();
-    }
 }
