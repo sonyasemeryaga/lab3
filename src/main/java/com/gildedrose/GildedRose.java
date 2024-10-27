@@ -29,9 +29,7 @@ class GildedRose {
                     }
             }
 
-            if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.itemSellInQuality.sellIn = item.itemSellInQuality.sellIn - 1;
-            }
+            decreaseSellInForNotSulfuras(item.itemSellInQuality, name);
 
             if (item.itemSellInQuality.sellIn < 0) {
                 if (!name.equals("Aged Brie")) {
@@ -46,6 +44,12 @@ class GildedRose {
                     increaseQuality(item.itemSellInQuality);
                 }
             }
+        }
+    }
+
+    private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality, String name) {
+        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
+            itemSellInQuality.sellIn -= 1;
         }
     }
 
