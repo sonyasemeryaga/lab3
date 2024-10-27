@@ -21,7 +21,6 @@ class GildedRose {
             if (!isSpecialItem(name)) {
                 updateUsualItems(item.itemSellInQuality, name);
             } else {
-                increaseQuality(item.itemSellInQuality);
                 updateBackstagePasses(item.itemSellInQuality, name);
                 updateAgedBrie(item.itemSellInQuality, name);
             }
@@ -38,6 +37,7 @@ class GildedRose {
 
     private void updateAgedBrie(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Aged Brie")) {
+            increaseQuality(itemSellInQuality);
             decreaseSellInForNotSulfuras(itemSellInQuality);
             if (itemSellInQuality.sellIn < 0) {
                 increaseQuality(itemSellInQuality);
@@ -47,6 +47,7 @@ class GildedRose {
 
     private void updateBackstagePasses(ItemSellInQuality itemSellInQuality, String name) {
         if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            increaseQuality(itemSellInQuality);
             decreaseSellInForNotSulfuras(itemSellInQuality);
             if (itemSellInQuality.sellIn < 11) {
                 increaseQuality(itemSellInQuality);
