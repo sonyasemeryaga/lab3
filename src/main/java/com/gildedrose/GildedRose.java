@@ -62,22 +62,18 @@ class GildedRose {
     }
 
     private void zeroQuality(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.quality = 0;
+        itemSellInQuality.zeroQuality();
     }
 
     private void decreaseSellInForNotSulfuras(ItemSellInQuality itemSellInQuality) {
-        itemSellInQuality.sellIn -= 1;
+        itemSellInQuality.decreaseSellInForNotSulfuras();
     }
 
     private void increaseQuality(ItemSellInQuality itemSellInQuality) {
-        if (itemSellInQuality.quality < 50) {
-            itemSellInQuality.quality += 1;
-        }
+        itemSellInQuality.increaseQuality();
     }
 
     private void decreaseQuality(ItemSellInQuality itemSellInQuality) {
-        if (itemSellInQuality.quality > 0) {
-            itemSellInQuality.quality -= 1;
-        }
+        itemSellInQuality.decreaseQuality();
     }
 }
