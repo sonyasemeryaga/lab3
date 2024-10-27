@@ -17,14 +17,18 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            String name = item.name;
-            if (!isSpecialItem(name)) {
-                updateUsualItems(item.itemSellInQuality, name);
-            } else {
-                updateBackstagePasses(item.itemSellInQuality, name);
-                updateAgedBrie(item.itemSellInQuality, name);
-            }
+            updateItem(item);
         }
+    }
+
+    private void updateItem(Item item) {
+        String name = item.name;
+        if (!isSpecialItem(name)) {
+            updateUsualItems(item.itemSellInQuality, name);
+            return;
+        }
+        updateBackstagePasses(item.itemSellInQuality, name);
+        updateAgedBrie(item.itemSellInQuality, name);
     }
 
     private void updateUsualItems(ItemSellInQuality itemSellInQuality, String name) {
